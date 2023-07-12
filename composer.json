@@ -2,12 +2,6 @@
     "name": "waka/wn-cloudis-plugin",
     "description": "Plugin pour cloudis",
     "type": "winter-plugin",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/charlesStOlive/cloudder"
-        }
-    ],
     "require": {
         "jrm2k6/cloudder": "dev-waka"
     },
