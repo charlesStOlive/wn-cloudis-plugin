@@ -1,0 +1,31 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:    
+    name:
+        label: waka.cloudis::biblio.name
+        span: left
+        required: true
+    slug:
+        label: waka.cloudis::biblio.slug
+        span: right
+        required: true
+        preset: name
+    type:
+        label: waka.cloudis::biblio.type
+        span: left
+        type: balloon-selector
+        default: image
+        options: listTypeImage
+    load_options:
+        label: waka.cloudis::biblio.load_options
+        span: full
+        type: codeeditor
+        language: yaml
+    options:
+        label: waka.cloudis::biblio.options
+        span: full
+        type: codeeditor
+        language: yaml
+

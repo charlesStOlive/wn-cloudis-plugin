@@ -1,0 +1,20 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    state:
+        label: waka.cloudis::montage.state
+        searchable: true
+    name:
+        label: waka.cloudis::montage.name
+        searchable: true
+    slug:
+        label: waka.cloudis::montage.slug
+        searchable: true
+    updated_at:
+        label: waka.wutils::lang.global.updated_at
+        type: timetense
+    sort_order:
+        label: waka.wutils::lang.global.sort_order
+        invisible: true

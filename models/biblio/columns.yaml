@@ -1,0 +1,23 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    name:
+        label: waka.cloudis::biblio.name
+        searchable: true
+    slug:
+        label: waka.cloudis::biblio.slug
+        searchable: true
+    type:
+        label: waka.cloudis::biblio.type
+        searchable: true
+    updated_at:
+        label: waka.wutils::lang.global.updated_at
+        type: timetense
+    cloudiLink:
+        label: lien
+        clickable: false
+        type: partial
+        path: $/waka/cloudis/models/biblio/_column_link.htm

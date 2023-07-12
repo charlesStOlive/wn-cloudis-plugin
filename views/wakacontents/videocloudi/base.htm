@@ -1,0 +1,25 @@
+<div class="w-full   relative {{ data.opt_env_colors }} {% if data.opt_center_container %}mx-auto{% endif %} " style="{{ data.opt_style_container }} ">
+    <div class="{% if data.content %} grid grid-cols-1 md:grid-cols-2{% endif %}">
+        <div class="{% if data.opt_center_content %}mx-auto text-center{% endif %} prose" style="{{ data.opt_style_text }}">
+            {% if data.title %}
+            <h3>{{data.title}}</h3>
+            {% endif %}
+            {% if data.content %}
+            <div class="">{{data.content | raw }}</div>
+            {% endif %}
+        </div>
+        <div class="mx-auto" style="{{ data.opt_style_video }}">
+                <video class="video_auto_play mx-auto"
+                       controlsList="nodownload noremoteplayback"
+                       muted
+                       controls
+                       width="100%"
+                       height="100%">
+
+                    <source src="{{ biblioVideo(data.video_code)}}"
+                            type="video/mp4" />
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+        </div>
+    </div>
+</div>
