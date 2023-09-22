@@ -2,26 +2,28 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
-use System\Classes\SettingsManager;
-
+use System\Classes\SettingsManager; 
 /**
- * Biblio Back-end Controller
+ * Biblios Backend Controller
  */
 class Biblios extends Controller
 {
+    /**
+     * @var array Behaviors that are implemented by this controller.
+     */
     public $implement = [
-        'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController',
-        
+        \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\ListController::class,
+        \Waka\Wutils\Behaviors\WakaControllerBehavior::class,
     ];
 
-    public $formConfig = 'config_form.yaml';
-    public $listConfig = 'config_list.yaml';
-    
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('October.System', 'system', 'settings');
-        SettingsManager::setContext('Waka.Cloudis', 'Biblios');
+        BackendMenu::setContext('Winter.System', 'system', 'settings');
+        SettingsManager::setContext('Waka.Cloudis', 'biblios');
     }
+
+    
+    
 }

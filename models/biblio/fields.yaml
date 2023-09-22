@@ -4,32 +4,49 @@
 
 fields:    
     name:
-        label: waka.cloudis::biblio.name
+        label: waka.cloudis::lang.models.biblio.name
         span: left
         required: true
     slug:
-        label: waka.cloudis::biblio.slug
+        label: waka.cloudis::lang.models.biblio.slug
         span: right
         required: true
         preset: name
     type:
-        label: waka.cloudis::biblio.type
+        label: waka.cloudis::lang.models.biblio.type
         span: left
         type: balloon-selector
         default: image
         options: listTypeImage
+    src:
+        label: waka.cloudis::lang.models.biblio.src
+        span: left
+        type: cloudifileupload
+        mode: image
+        imageHeight: 150
+        imageWidth: 150
+        dependsOn: type
     srcv:
-        label: waka.cloudis::biblio.srcv
+        label: waka.cloudis::lang.models.biblio.srcv
         span: left
         type: cloudifileupload
         mode: file
+        dependsOn: type
+    srcs:
+        label: waka.cloudis::lang.models.biblio.srcv
+        span: left
+        type: cloudifileupload
+        mode: image
+        imageHeight: 150
+        imageWidth: 150
+        dependsOn: type
     load_options:
-        label: waka.cloudis::biblio.load_options
-        span: full
+        label: waka.cloudis::lang.models.biblio.load_options
+        span: left
         type: codeeditor
         language: yaml
     options:
-        label: waka.cloudis::biblio.options
-        span: full
+        label: waka.cloudis::lang.models.biblio.options
+        span: right
         type: codeeditor
         language: yaml

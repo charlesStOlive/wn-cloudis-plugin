@@ -1,0 +1,39 @@
+# ===================================
+#  WakaController | Workflow | Productor |  Behavior Config
+# ===================================
+
+
+modelClass: Waka\Cloudis\Models\Montage
+backendUrl: waka/cloudis/montages
+
+workflow: false 
+
+
+controllerConfig:
+    breadcrump:
+        inSettings: true 
+        title: waka.cloudis::lang.models.montage.label
+        rows: 
+            index: 
+                label: waka.cloudis::lang.controllers.montages.label
+                url: waka/cloudis/montages 
+    index:
+        base:
+            create: 
+                show: true
+                permissions: [waka.cloudis.admin.super]
+            reorder: 
+                show: false  
+                permissions: []
+            delete: 
+                show: true
+                permissions: [waka.cloudis.admin.super]
+        # partials:
+        #     index_btn:
+        #         url: $/waka/cloudis/controllers/montages/_index_btn.php
+    update:
+        partials:
+            test:
+                url: $/waka/cloudis/controllers/montages/_test.htm
+
+

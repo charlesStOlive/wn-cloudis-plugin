@@ -3,23 +3,14 @@
 # ===================================
 
 fields:
-    state:
-        label: waka.cloudis::montage.state
-        span: full
-        type: balloon-selector
-        required: true
-        options: listStates
-        default: Actif
-        permissions: [waka.cloudis.admin.*]
-        tab: waka.cloudis::montage.tab_edit
     name:
-        label: waka.cloudis::montage.name
+        label: waka.cloudis::lang.models.montage.name
         span: left
         required: true
-        tab: waka.cloudis::montage.tab_edit
+        tab: waka.cloudis::lang.models.montage.tab_edit
     slug:
-        label: waka.cloudis::montage.slug
+        label: waka.cloudis::lang.models.montage.slug
         span: right
         required: true
         preset: name
-        tab: waka.cloudis::montage.tab_edit
+        tab: waka.cloudis::lang.models.montage.tab_edit

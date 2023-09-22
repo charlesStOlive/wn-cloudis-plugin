@@ -35,8 +35,8 @@ class Biblio extends Model
     ];
 
     public $customMessages = [
-        'name.required' => 'waka.cloudis::biblio.e.name',
-        'slug.required' => 'waka.cloudis::biblio.e.slug',
+        'name.required' => 'waka.cloudis::lang.models.biblio.e.name',
+        'slug.required' => 'waka.cloudis::lang.models.biblio.e.slug',
     ];
 
     /**
@@ -98,18 +98,20 @@ class Biblio extends Model
         'srcv' => 'Waka\Cloudis\Models\CloudiFile',
     ];
     public $attachMany = [
+        'srcs' => 'Waka\Cloudis\Models\CloudiFile',
     ];
 
     /**
      *EVENTS
      **/
 
+
     /**
      * LISTS
      **/
     public function listTypeImage()
     {
-        return ['image' => 'Image', 'video' => 'Vidéo'];
+        return ['image' => 'Image', 'images' => 'Images', 'video' => 'Vidéo', 'raw' => 'raw'];
     }
 
     /**
@@ -122,14 +124,12 @@ class Biblio extends Model
         } elseif($this->srcv) {
             return "<a href='".$this->getVideoUrl()."' target='_blank'>lien</a>";
         } else {
-            return null;
+            return $this->type;
         }
     }
 
     public function getVideoUrl($options = [])
     {
-        
-        
         $biblioOption = $this->getOptions();
         $formatOption = array_merge($biblioOption, $options);
         //trace_log($formatOption);
@@ -157,11 +157,20 @@ class Biblio extends Model
      */
     public function filterFields($fields, $context = null)
     {
-        if (isset($fields->src)) {
+        
+        if (isset($fields->src) || isset($fields->srcv)) {
             if ($this->type == 'image') {
-                $fields->srcv->hidden = 'true';
+                $fields->srcs->hidden = true;
+                $fields->srcv->hidden = true;
+                $fields->src->hidden = false;
+            } elseif ($this->type == 'images') {
+                $fields->srcs->hidden = false;
+                $fields->srcv->hidden = true;
+                $fields->src->hidden = true;
             } else {
-                $fields->src->hidden = 'true';
+                $fields->srcs->hidden = true;
+                $fields->src->hidden = true;
+                $fields->srcv->hidden = false;
             }
         }
     }

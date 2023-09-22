@@ -24,6 +24,7 @@ class CreateCloudisSystemFilesPhp extends Migration
             $table->string('attachment_type')->index()->nullable();
             $table->boolean('is_public')->default(true);
             $table->integer('sort_order')->nullable();
+            $table->text('options')->nullable();
             $table->timestamps();
         });
     }

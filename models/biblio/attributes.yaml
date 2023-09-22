@@ -5,9 +5,9 @@
 icon: icon-id-card
 attributes:
     name:
-        label: waka.cloudis::biblio.name
+        label: waka.cloudis::lang.models.biblio.name
     slug:
-        label: waka.cloudis::biblio.slug
+        label: waka.cloudis::lang.models.biblio.slug
     updated_at:
         label: waka.wutils::lang.global.updated_at
         type: date-medium

@@ -3,14 +3,11 @@
 # ===================================
 
 columns:
-    state:
-        label: waka.cloudis::montage.state
-        searchable: true
     name:
-        label: waka.cloudis::montage.name
+        label: waka.cloudis::lang.models.montage.name
         searchable: true
     slug:
-        label: waka.cloudis::montage.slug
+        label: waka.cloudis::lang.models.montage.slug
         searchable: true
     updated_at:
         label: waka.wutils::lang.global.updated_at

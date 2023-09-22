@@ -1,0 +1,28 @@
+fields: 
+    mode:
+        label: Mode de création
+        type: dropdown 
+        options: 
+            ds: Injecttion des donnés de la cible
+            data: Injecttion + Modifications de données manuels
+    unique:
+        label: Présentation unique 
+        type: checkbox
+        comment: La version ne sera pas enregistré comme scène liée à la cible
+    scene_slug: 
+        label: Slug/Code de la scène
+        comment: Ce code doit être unique, vous pouvez le laisser vide pour une création automatique
+    change_dsMap: 
+        label: Clef du dsMap
+        default: for3d
+    model_data_before: 
+        label: Ajouter des données de démarrage AVANT (optionel)
+        type: codeeditor
+        language: yaml
+        options: getEmails
+        trigger: 
+            action: show 
+            condition: value[data] 
+            field: mode
+
+    

@@ -1,0 +1,39 @@
+# ===================================
+#  WakaController | Workflow | Productor |  Behavior Config
+# ===================================
+
+
+modelClass: Waka\Cloudis\Models\Biblio
+backendUrl: waka/cloudis/biblios
+
+workflow: false 
+
+
+controllerConfig:
+    breadcrump:
+        inSettings: true 
+        title: waka.cloudis::lang.models.biblio.label
+        rows: 
+            index: 
+                label: waka.cloudis::lang.controllers.biblios.label
+                url: waka/cloudis/biblios 
+    index:
+        base:
+            create: 
+                show: true
+                permissions: [waka.cloudis.*]
+            reorder: 
+                show: false  
+                permissions: []
+            delete: 
+                show: true
+                permissions: [waka.cloudis.*]
+        # partials:
+        #     index_btn:
+        #         url: $/waka/cloudis/controllers/biblios/_index_btn.php
+    update:
+        # partials:
+        #     update_btn:
+        #         url: $/waka/cloudis/controllers/biblios/_update_btn.php
+
+

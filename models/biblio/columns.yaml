@@ -5,13 +5,13 @@
 columns:
 
     name:
-        label: waka.cloudis::biblio.name
+        label: waka.cloudis::lang.models.biblio.name
         searchable: true
     slug:
-        label: waka.cloudis::biblio.slug
+        label: waka.cloudis::lang.models.biblio.slug
         searchable: true
     type:
-        label: waka.cloudis::biblio.type
+        label: waka.cloudis::lang.models.biblio.type
         searchable: true
     updated_at:
         label: waka.wutils::lang.global.updated_at

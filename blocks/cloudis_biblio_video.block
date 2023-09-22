@@ -1,0 +1,55 @@
+name: waka.cloudis::lang.blocks.bibliocloudi.name
+description: waka.cloudis::lang.blocks.bibliocloudi.description
+icon: icon-video
+tags: ["content", "video"]
+fields:
+    cloudi_code:
+        label: waka.cloudis::lang.blocks.bibliocloudi.cloudi_code
+        type: dropdown 
+        span: left
+        options: \Waka\Cloudis\Classes\BlocFormHelper::getBiblioVideoCloudiOptions
+    auto_play: 
+        label: waka.cloudis::lang.blocks.bibliocloudi.auto_play
+        type: checkbox
+        span: right
+        cssClass: p-t-md
+        default: true
+    opts:
+        type: nestedform 
+        form: 
+            fields: 
+                setCss:
+                    label: waka.cloudis::lang.blocks.comons.set
+                    type: dropdown 
+                    span: storm 
+                    cssClass: col-xs-4
+                    options:  \Wcli\Wcms\Classes\BlocFormHelper::getObjectCss
+                addCss:
+                    label:  wcli.wcms::lang.blocks.comons.addCss
+                    type: taglist
+                    mode: array 
+                    span: storm 
+                    cssClass: col-xs-4
+                    options:  \Wcli\Wcms\Classes\BlocFormHelper::getAddCssOptions
+                    comment: remplacera container mx-auto
+                style: 
+                    label: winter.blocks::lang.blocks.comons.style
+                    span: storm 
+                    cssClass: col-xs-4
+                    comment: ex height:600px;width:100%%
+    
+==
+
+{% if data.cloudi_code %}
+        <video
+            class="{% if data.cloudi_code %}video_auto_play{% endif %} aspect-[16/9] {{ data.opts.setCss }} {{data.opts.addCss | join(' ') | default('container mx-auto')}}""
+            controlsList="nodownload nofullscreen"
+            muted
+            controls
+            loop
+            style="{{data.configCss.style}}"
+        >
+            <source src="{{ biblioVideo(data.cloudi_code)}}" type="video/mp4" />
+            Sorry, your browser doesn't support embedded videos.
+        </video>
+{% endif %}

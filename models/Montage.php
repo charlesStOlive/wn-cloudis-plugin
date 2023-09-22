@@ -35,14 +35,13 @@ class Montage extends Model
      * @var array Validation rules for attributes
      */
     public $rules = [
-        'state' => 'required',
         'name' => 'required',
         'slug' => 'required|unique',
     ];
 
     public $customMessages = [
-        'data_source.required' => 'waka.cloudis::montage.e.data_source',
-        'state.required' => 'waka.cloudis::montage.e.state',
+        'data_source.required' => 'waka.cloudis::lang.models.montage.e.data_source',
+        'state.required' => 'waka.cloudis::lang.models.montage.e.state',
     ];
 
     /**
@@ -105,20 +104,6 @@ class Montage extends Model
     ];        
     public $morphTo = [
     ];
-    public $morphOne = [
-        'waka_session' => [
-            'Waka\Session\Models\WakaSession',
-            'name' => 'sessioneable',
-            'delete' => true
-        ],
-    ];
-    public $morphMany = [
-        'rule_conditions' => [
-            'Waka\WakaBlocs\Models\RuleCondition',
-            'name' => 'conditioneable',
-            'delete' => true
-        ],
-    ];
     public $attachOne = [
         'src' => ['Waka\Cloudis\Models\CloudiFile'],
         'masque' => ['Waka\Cloudis\Models\CloudiFile'],
@@ -135,9 +120,9 @@ class Montage extends Model
     /**
      * LISTS
      **/
-    public function listStates() {
-        return \Config::get('waka.utils::basic_state');
-    }
+
+    /**NODS*/
+
 
     /**
      * GETTERS

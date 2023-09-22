@@ -3,7 +3,7 @@
 # ===================================
 
 waka_session:
-    label: waka.cloudis::montage.waka_session
+    label: waka.cloudis::lang.models.montage.waka_session
     manage:
         form: $/waka/session/models/wakasession/fields.yaml
     view:

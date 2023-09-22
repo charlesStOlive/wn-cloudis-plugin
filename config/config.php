@@ -45,13 +45,4 @@ return [
             ],
         ],
     ],
-    'btns' => [
-        'montage' => [
-            'label' => 'Montage',
-            'class' => 'btn-secondary',
-            'ajaxCaller' => 'onLoadMontageBehaviorPopupForm',
-            'ajaxInlineCaller' => 'onLoadMontageBehaviorContentForm',
-            'icon' => 'oc-icon-file-pdf-o',
-        ],
-    ],
 ];

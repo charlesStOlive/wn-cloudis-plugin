@@ -506,6 +506,8 @@ class CloudiFileUpload extends FormWidgetBase
             $thumb = $file->getThumb($this->imageWidth, $this->imageHeight, $this->thumbOptions);
         }
 
+        //trace_log('decorateFileAttributes thumb !!!', $thumb);
+
         $file->pathUrl = $path;
         $file->thumbUrl = $thumb;
 

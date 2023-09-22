@@ -22,18 +22,13 @@ fields:
     primary_color:
             tab: wcli.wconfig::lang.client.colors
             label: wcli.wconfig::lang.client.primary_color
-            type: colorpickercloudi
+            type: colorpicker
             span: auto
-            colorsFrom: logo
-            dependsOn: logo
-
     secondary_color:
         tab: wcli.wconfig::lang.client.colors
         label: wcli.wconfig::lang.client.secondary_color
-        type: colorpickercloudi
+        type: colorpicker
         span: auto
-        colorsFrom: logo
-        dependsOn: logo
 
     police_1: 
         label: waka.cloudis::lang.settings.police_1

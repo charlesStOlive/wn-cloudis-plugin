@@ -1,4 +1,6 @@
-<?php namespace Waka\Cloudis\Models;
+<?php
+
+namespace Waka\Cloudis\Models;
 
 use Backend\Controllers\Files;
 use Config;
@@ -14,7 +16,7 @@ use \Waka\Cloudis\Models\Settings as CloudisSettings;
  * @package october\system
  * @author Alexey Bobkov, Samuel Georges
  */
-class CloudiFile extends FileBase// copy de \Modules\System\Files et adaptation.
+class CloudiFile extends FileBase // copy de \Modules\System\Files et adaptation.
 {
     /**
      * @var string The database table used by the model.
@@ -28,6 +30,35 @@ class CloudiFile extends FileBase// copy de \Modules\System\Files et adaptation.
     public function beforeDelete()
     {
         //trace_log("before delete in cloudi");
+    }
+
+    public static function getAllFiles($ressource_type ='image')
+    {
+        $next_cursor = null;
+        $allFiles = [];
+
+        $options = [
+            "type" => "upload",
+            "prefix" => CloudisSettings::get('cloudinary_path'),
+            "resource_type" => $ressource_type,
+            "max_results" => 2000
+
+        ];
+
+        do {
+            if ($next_cursor) {
+                $options['next_cursor'] = $next_cursor;
+            }
+
+            $result = \Cloudder::resources($options);
+            foreach ($result['resources'] as $resource) {
+                $allFiles[] = $resource['public_id'];
+            }
+            // Vérifiez si un next_cursor est renvoyé et, dans ce cas, continuez à récupérer les fichiers
+            $next_cursor = isset($result['next_cursor']) ? $result['next_cursor'] : null;
+        } while ($next_cursor);
+
+        return $allFiles;
     }
 
     public function getCloudiPathAttribute()
@@ -50,7 +81,7 @@ class CloudiFile extends FileBase// copy de \Modules\System\Files et adaptation.
 
         $options = [];
 
-        if($this->options) {
+        if ($this->options) {
             $options = \Yaml::parse($this->options);
         }
 
@@ -63,8 +94,8 @@ class CloudiFile extends FileBase// copy de \Modules\System\Files et adaptation.
          * getRealPath() can be empty for some environments (IIS)
          */
         $realPath = empty(trim($uploadedFile->getRealPath()))
-        ? $uploadedFile->getPath() . DIRECTORY_SEPARATOR . $uploadedFile->getFileName()
-        : $uploadedFile->getRealPath();
+            ? $uploadedFile->getPath() . DIRECTORY_SEPARATOR . $uploadedFile->getFileName()
+            : $uploadedFile->getRealPath();
 
 
         if (starts_with($this->content_type, 'video')) {
@@ -108,7 +139,7 @@ class CloudiFile extends FileBase// copy de \Modules\System\Files et adaptation.
     /**
      * Copy de la finction de FILEBASE pour enlever les extentions.
      */
-    protected function getDiskName():string
+    protected function getDiskName(): string
     {
         if ($this->disk_name !== null) {
             return $this->disk_name;
@@ -119,7 +150,7 @@ class CloudiFile extends FileBase// copy de \Modules\System\Files et adaptation.
     public function getCloudiUrl($width = 400, $height = 400, $format = "auto", $crop = "fill", $otherOptions = [])
     {
         $formatOption = [];
-        if($crop == "pad") {
+        if ($crop == "pad") {
             $formatOption = [
                 "width" => $width,
                 "height" => $height,
@@ -137,7 +168,7 @@ class CloudiFile extends FileBase// copy de \Modules\System\Files et adaptation.
                 "fetch_format" => $format,
             ];
         }
-       
+
         $formatOption['format'] = $format;
         $formatOption = array_merge($formatOption, $otherOptions);
         //trace_log($formatOption);

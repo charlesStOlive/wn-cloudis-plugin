@@ -15,6 +15,7 @@ class CreateBibliosTable extends Migration
             $table->string('slug');
             $table->string('type')->nullable();
             $table->text('options')->nullable();
+            $table->text('load_options')->nullable();
             $table->timestamps();
         });
     }

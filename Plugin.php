@@ -45,6 +45,17 @@ class Plugin extends PluginBase
      */
     public function register()
     {
+        $this->registerConsoleCommand('waka:cleanCloudiFiles', 'Waka\Cloudis\Console\CleanCloudiFiles');
+    }
+
+    /**
+     * Registers the custom Blocks provided by this plugin
+     */
+    public function registerBlocks(): array
+    {
+        return [
+            'cloudis_biblio_video' => '$/waka/cloudis/blocks/cloudis_biblio_video.block',
+        ];
     }
 
     public function registerMarkupTags()
@@ -132,12 +143,6 @@ class Plugin extends PluginBase
             ],
         ];
     }
-
-    // public function getCloudiUrl($cloudi)
-    // {
-    //     return get_class($cloudi);
-    // }
-
     
     /**
      * Boot method, called right before the request route.
@@ -151,17 +156,6 @@ class Plugin extends PluginBase
         App::register(\JD\Cloudder\CloudderServiceProvider::class);
         $registeredAppPathConfig = require __DIR__ . '/config/cloudder.php';
         \Config::set('cloudder', $registeredAppPathConfig);
-        // $this->bootPackages();
-
-        // \Waka\Utils\Classes\Ds\DataXXSource::extend(function($ds) {
-        //     $ds->addDynamicMethod('getImagesFilesFromMontage', function($code) use ($ds) {
-        //         $code ? $code : $ds->code;
-        //         return \Waka\Cloudis\Models\Montage::whereHas('waka_session', function($q) use($code) {
-        //                     $q->where('data_source', $code);
-        //         })->lists('name', 'id');
-        //     });
-                
-        // // });
     }
 
     /**
@@ -177,7 +171,6 @@ class Plugin extends PluginBase
     public function registerFormWidgets(): array
     {
         return [
-            //'Waka\Cloudis\FormWidgets\MontagesList' => 'montagelist',
             'Waka\Cloudis\FormWidgets\CloudiFileUpload' => 'cloudifileupload',
             'Waka\Cloudis\FormWidgets\BiblioList' => 'bibliolist',
         ];
@@ -237,32 +230,33 @@ class Plugin extends PluginBase
     {
         return [
             'montages' => [
-                'label' => Lang::get('waka.cloudis::lang.menu.label'),
+                'label' => Lang::get('waka.cloudis::lang.menu.montages'),
                 'description' => Lang::get('waka.cloudis::lang.menu.description'),
-                'category' => Lang::get('waka.utils::lang.menu.settings_category_model'),
+                'category' => Lang::get('waka.wutils::lang.menu.settings_category_model'),
                 'icon' => 'icon-object-group',
                 'permissions' => ['waka.cloudis.admin.*'],
                 'url' => Backend::url('waka/cloudis/montages'),
                 'order' => 40,
             ],
-            'cloudis_settings' => [
-                'label' => Lang::get('waka.cloudis::lang.menu.settings'),
-                'description' => Lang::get('waka.cloudis::lang.menu.settings_description'),
-                'category' => Lang::get('waka.utils::lang.menu.settings_category'),
-                'icon' => 'icon-file-image-o',
-                'class' => 'Waka\Cloudis\Models\Settings',
-                'order' => 115,
-                'permissions' => ['waka.cloudis.admin.super'],
-            ],
             'biblios' => [
                 'label' => Lang::get('waka.cloudis::lang.menu.biblios'),
                 'description' => Lang::get('waka.cloudis::lang.menu.biblios_desc'),
-                'category' => Lang::get('waka.utils::lang.menu.settings_category_model'),
+                'category' => Lang::get('waka.wutils::lang.menu.settings_category_model'),
                 'icon' => 'icon-picture-o',
                 'permissions' => ['waka.cloudis.*'],
                 'url' => Backend::url('waka/cloudis/biblios'),
                 'order' => 40,
             ],
+            'cloudis_settings' => [
+                'label' => Lang::get('waka.cloudis::lang.menu.settings'),
+                'description' => Lang::get('waka.cloudis::lang.menu.settings_description'),
+                'category' => Lang::get('waka.wutils::lang.menu.settings_category'),
+                'icon' => 'icon-file-image-o',
+                'class' => 'Waka\Cloudis\Models\Settings',
+                'order' => 115,
+                'permissions' => ['waka.cloudis.admin.super'],
+            ],
+            
         ];
     }
 }

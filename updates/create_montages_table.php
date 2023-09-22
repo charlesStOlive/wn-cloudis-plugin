@@ -11,11 +11,9 @@ class CreateMontagesTable extends Migration
         Schema::create('waka_cloudis_montages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('state')->default('Actif');
             $table->string('name');
             $table->string('slug');
-            $table->string('data_source');
-            $table->string('test_id')->nullable();
+            $table->text('memo')->nullable();
             $table->text('options')->nullable();
             $table->boolean('use_files')->nullable()->default(false);
             //reorder
