@@ -1,6 +1,6 @@
 {
     "name": "waka/wn-cloudis-plugin",
-    "description": "Plugin pour cloudis",
+    "description": "Permet de travailler avec cloudinary",
     "type": "winter-plugin",
     "require": {
         "jrm2k6/cloudder": "dev-waka"
