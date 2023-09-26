@@ -23,7 +23,7 @@ create:
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: waka/cloudis/montages
+    redirect: waka/cloudis/montages/update/:id
     redirectClose: waka/cloudis/montages
 
 # Preview page
