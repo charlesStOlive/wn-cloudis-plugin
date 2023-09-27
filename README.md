@@ -1,4 +1,5 @@
 # Cloudis
+toDO : cloudiMaker pas terminé !
 
 Permet d'interagir avec cloudinary
 

@@ -101,31 +101,7 @@ trait CloudiTrait
     // }
     
 
-    public function dsGetCloudiMontage($key, $field, $opt)
-    {
-        //trace_log('dsGetCloudiMontage--------------------------');
-
-        $key = $this->dsGetValueFrom($key, $field, $opt);
-        //
-        $basicFinalOptions = [
-            'crop' => 'fit',
-            'height' => 500,
-            'width' => 500,
-        ];
-        $slug = $field['params']['slug'] ?? 500;
-        $finalOptions = $field['params']['options'] ?? [];
-        $montage = \Waka\Cloudis\Models\Montage::where('slug', $slug)->first();
-        $dataFormontages = $this->dsMap('forCloudi');
-        $parser = new YamlParserRelation($montage, $dataFormontages);
-        $options = $parser->options;
-        $finalOptions = array_merge($basicFinalOptions, $finalOptions);
-        array_push($options['transformation'], $finalOptions);
-        return [
-            'path' => \Cloudder::secureShow($parser->src, $options),
-            'width' => $finalOptions['width'],
-            'height' => $finalOptions['height'],
-        ];
-    }
+    
 
     public function dscloudiColor($key, $field, $opt)
     {
@@ -159,16 +135,47 @@ trait CloudiTrait
         return  $this->{$key}->cloudiId;
     }
 
+    public function dsGetCloudiMontage($key, $field, $opt)
+    {
+        //trace_log('dsGetCloudiMontage--------------------------');
+        //trace_log($field);
+        //trace_log($opt);
+
+        $key = $this->dsGetValueFrom($key, $field, $opt);
+        //
+        $basicFinalOptions = [
+            'crop' => 'fit',
+            'height' => 500,
+            'width' => 500,
+        ];
+        $slug = $field['params']['slug'] ?? 500;
+        $finalOptions = $field['params']['options'] ?? [];
+        $montage = \Waka\Cloudis\Models\Montage::where('slug', $slug)->first();
+        $dataFormontages = $this->dsMap('forCloudi');
+        $parser = new YamlParserRelation($montage, $dataFormontages);
+        $options = $parser->options;
+        $finalOptions = array_merge($basicFinalOptions, $finalOptions);
+        array_push($options['transformation'], $finalOptions);
+        return [
+            'path' => \Cloudder::secureShow($parser->src, $options),
+            'width' => $finalOptions['width'],
+            'height' => $finalOptions['height'],
+        ];
+    }
+
     public function dsConfigMontage()
     {
         return
             [
                 'slug' => [
-                    'label' => 'Entrez le code de l image',
+                    'label' => 'Choisissez un montage photo',
+                    'type' => 'dropdown',
+                    'options' => \Waka\Cloudis\Models\Montage::pluck('slug', 'slug'), 
                 ],
                 'params' => [
                     'label' => 'Paramètres de l\'image',
                     'type' => 'nestedform',
+                    'usePanelStyles' => false,
                     'form' => [
                         'fields' => [
                             'width' => [

@@ -3,41 +3,27 @@
 use Yaml;
 use Closure;
 use Lang; 
+use \Waka\Productor\Classes\Abstracts\BaseProductor;
 
-class CloudiMaker
+class CloudiMaker extends BaseProductor
 {
     public $src;
     public $options;
 
-    use \Waka\Productor\Classes\Traits\TraitProductor;
-
-    public static function getConfig()
-    {
-        return [
-            'label' => Lang::get('waka.cloudis::lang.driver.babyler.label'),
-            'icon' => 'icon-mjml',
-            'description' => Lang::get('waka.cloudis::lang.driver.babyler.description'),
-            'productorModel' => \Waka\Cloudis\Models\Montage::class,
-            'productorCreator' => \Waka\Cloudis\Classes\CloudiCreator::class,
-            'productor_yaml_config' => '~/plugins/waka/cloudis/models/montage/productor_config.yaml',
-            'methods' => [
-                'createLink' => [
-                    'label' => 'Creer un lien',
-                    'handler' => 'createLink',
-                ],
+    public static $config = [
+        'label' => 'waka.cloudis::lang.driver.babyler.label',
+        'icon' => 'icon-mjml',
+        'description' => 'waka.cloudis::lang.driver.babyler.description',
+        'productorModel' => \Waka\Cloudis\Models\Montage::class,
+        'productorCreator' => \Waka\Cloudis\Classes\CloudiCreator::class,
+        'productor_yaml_config' => '~/plugins/waka/cloudis/models/montage/productor_config.yaml',
+        'methods' => [
+            'createLink' => [
+                'label' => 'Creer un lien',
+                'handler' => 'createLink',
             ],
-        ];
-    }
-
-    public static function updateFormwidget($slug, $formWidget, $dsMap = null)
-    {
-        $productorModel = self::getProductor($slug);
-        $formWidget->getField('model_data_before')->value = $productorModel->default_data;
-        $formWidget->getField('change_dsMap')->value = $dsMap;
-        //Je n'ais pas trouvé de solution pour charger les valeurs. donc je recupère les asks dans un primer temps avec une valeur par defaut qui ne marche pas et je le réajoute ensuite.... 
-        $formWidget = self::getAndSetAsks($productorModel, $formWidget);
-        return $formWidget;
-    }
+        ],
+    ];
 
     public static function execute($templateCode, $productorHandler, $allDatas):array {
         //trace_log($allDatas);
@@ -88,6 +74,16 @@ class CloudiMaker
                 ],
             ];
         }
+    }
+
+    public static function updateFormwidget($slug, $formWidget, $dsMap = null)
+    {
+        $productorModel = self::getProductor($slug);
+        $formWidget->getField('model_data_before')->value = $productorModel->default_data;
+        $formWidget->getField('change_dsMap')->value = $dsMap;
+        //Je n'ais pas trouvé de solution pour charger les valeurs. donc je recupère les asks dans un primer temps avec une valeur par defaut qui ne marche pas et je le réajoute ensuite.... 
+        // $formWidget = self::getAndSetAsks($productorModel, $formWidget);
+        return $formWidget;
     }
 
 
