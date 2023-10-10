@@ -19,13 +19,13 @@ fields:
         form: 
             fields: 
                 setCss:
-                    label: waka.cloudis::lang.blocks.comons.set
+                    label: wcli.wcms::lang.blocks.commons.setCss
                     type: dropdown 
                     span: storm 
                     cssClass: col-xs-4
                     options:  \Wcli\Wcms\Classes\BlocFormHelper::getObjectCss
                 addCss:
-                    label:  wcli.wcms::lang.blocks.comons.addCss
+                    label:  wcli.wcms::lang.blocks.commons.addCss
                     type: taglist
                     mode: array 
                     span: storm 

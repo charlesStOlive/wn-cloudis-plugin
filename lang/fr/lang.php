@@ -1,89 +1,71 @@
 <?php
 
 return [
-    'formwidget' => [
-        'checking' => 'Vérifier les montages',
-        'checking_indicator' => 'Vérification en cours',
-        'title' => 'Montage cloudis',
+    'controllers' => [
+        'biblios' => [
+            'label' => 'Biblios',
+        ],
+        'montages' => [
+            'label' => 'Montages',
+        ],
+    ],
+    'driver' => [
+        'babyler' => [
+            'description' => 'Permet de créer des montages photos',
+            'label' => 'Créer un montage',
+        ],
+        'execute' => [
+            'success' => [
+                'message' => 'Lien crée',
+            ],
+        ],
     ],
     'menu' => [
         'biblios' => 'Bibliothèque Cloudinary',
         'biblios_desc' => 'Images et vidéo de la bibliothèque Cloudinary',
         'description' => 'Gestion des montages photos pour les models de l\'application',
-        'label' => 'Montage photos',
-        'settings' => 'Options Images',
-        'settings_category' => 'Wakaari Modèle',
-        'settings_category_options' => 'Wakaari Options',
-        'settings_description' => 'Réglage des valeurs par defaut ( images, couleurs, image manquante)',
         'montages' => 'Montages',
+        'settings' => 'Options Images',
+        'settings_description' => 'Réglage des valeurs par defaut ( images, couleurs, image manquante)',
     ],
     'models' => [
         'biblio' => [
-            'create' => 'Créer une image',
             'e' => [
                 'name' => 'Le nom est requis',
                 'slug' => 'Le champs est requis et doit être unique',
             ],
-            'edit' => 'Éditer une image',
             'name' => 'Nom de l&#039;image',
-            'options' => 'Options de sorties',
+            'options' => 'Options',
             'slug' => 'code',
             'src' => 'Image',
-            'srcv' => 'Multiples images',
-            'title' => 'Gestion Biblios',
+            'srcv' => 'Vidéo',
             'type' => 'Type d&#039;image',
-            'update' => 'Modification biblio',
-            'load_options' => 'Option au chargement',
-            'label' => 'Biblio',
+            'label' => 'Bibliothèque viméo',
+            'load_options' => 'Options de chargement',
         ],
         'montage' => [
-            'create' => 'Créer un montage',
             'e' => [
                 'data_source' => 'Vous devez choisir un modèle',
                 'state' => 'Le champs état est obligatoire',
             ],
-            'edit' => 'Éditer un montage',
-            'form_name' => 'Gestion de l\'montage',
             'masque' => 'Masque ou autres sources (xl-masque-lx)',
             'memo' => 'Memo',
             'name' => 'Nom du montage',
-            'preview_name' => 'Voir l\'montage',
-            'rule_conditions' => 'Conditions',
-            'show' => 'Voir un montage',
             'slug' => 'Slug/Code',
             'src' => 'Image (xl-src-lx)',
-            'state' => 'État',
             'tab_edit' => 'Editer',
-            'tab_session' => 'Session',
             'test' => 'Tester un montage',
-            'test_title' => 'Tester un montage',
-            'title' => 'Gestion des montages',
-            'update' => 'Éditer un montage',
             'use_files' => 'Utilise des fichiers propres',
             'waka_session' => 'Clef pour LP',
             'label' => 'Montage',
         ],
     ],
     'montage' => [
-        'active' => 'Actif ?',
-        'auto_create' => 'Création automatique',
-        'cloudi_path' => 'Chemin sur cloudi',
-        'data_source' => 'Source des données',
-        'data_source_placeholder' => '--Choisissez une source--',
-        'masque' => 'Seconde source (ex: masque)',
         'name' => 'Nom du montage',
-        'options' => 'Options',
         'slug' => 'Slug',
-        'src' => 'Source du montage',
-        'use_files' => 'Utiliser des fichiers pour le montage',
-    ],
-    'popup' => [
-        'title' => 'Montage cloudis',
     ],
     'settings' => [
-        'category' => 'Cloudi',
         'cloudinary_path' => 'Chemin cloudinary',
-        'label' => 'Options Cloudi',
         'logo' => 'Logo',
         'logo_com' => 'Cette image sera disponible dans word, excel, etc.',
         'police_1' => 'Police pour les montages',
@@ -92,33 +74,15 @@ return [
         'police_2_com' => 'Code à utiliser : {nom_du_chemin}:police:police2',
         'police_3' => 'Police 3 pour les montages',
         'police_3_com' => 'Code à utiliser : {nom_du_chemin}:police:police3',
-        'primary_color' => 'Couleur primaire',
-        'secondary_color' => 'Couleur secondaire',
         'unknown' => 'Image manquante',
         'unknown_com' => 'Image de remplacement pour les assets manquant',
     ],
     'blocks' => [
         'bibliocloudi' => [
-            'cloudi_code' => 'Choisissez une vidéo',
-            'name' => 'Vidéo cloudi',
-            'auto_play' => 'Auto play ( lorsque le canvas est visible )',
-        ],
-        'comons' => [
-            'set' => 'Base Css de la vidéo',
-        ],
-    ],
-    'driver' => [
-        'babyler' => [
-            'label' => 'Créer un montage',
-            'description' => 'Permet de créer des montages photos',
-        ],
-    ],
-    'controllers' => [
-        'biblios' => [
-            'label' => 'Biblios',
-        ],
-        'montages' => [
-            'label' => 'Montages',
+            'name' => 'Média de la bibliothèque Cloudi',
+            'description' => 'Affiche un média depuis cloudinary',
+            'cloudi_code' => 'ID/Code du média',
+            'auto_play' => 'Activer autoPlay',
         ],
     ],
 ];

@@ -66,9 +66,9 @@ class CloudiMaker extends BaseProductor
         if($productorHandler == "createLink") {
             $link = self::createLink($templateCode, $data, $options);
             return [
-                'message' => 'Lien crée',
+                'message' => 'waka.cloudis::lang.driver.execute.success.message',
                 'btn' => [
-                    'label' => 'Ouvrir',
+                    'label' => 'waka.productor::lang.drivers.sucess_label.open_link',
                     'request' => 'onOpenLink',
                     'link' => $link
                 ],
@@ -76,11 +76,13 @@ class CloudiMaker extends BaseProductor
         }
     }
 
-    public static function updateFormwidget($slug, $formWidget, $dsMap = null)
+    public static function updateFormwidget($slug, $formWidget, $config = [])
     {
         $productorModel = self::getProductor($slug);
         $formWidget->getField('model_data_before')->value = $productorModel->default_data;
-        $formWidget->getField('change_dsMap')->value = $dsMap;
+        if($config['dsMap'] ?? false) {
+            $formWidget->getField('change_dsMap')->value = $config['dsMap'];
+        }
         //Je n'ais pas trouvé de solution pour charger les valeurs. donc je recupère les asks dans un primer temps avec une valeur par defaut qui ne marche pas et je le réajoute ensuite.... 
         // $formWidget = self::getAndSetAsks($productorModel, $formWidget);
         return $formWidget;
