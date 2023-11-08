@@ -68,7 +68,7 @@ class CloudiMaker extends BaseProductor
             return [
                 'message' => 'waka.cloudis::lang.driver.execute.success.message',
                 'btn' => [
-                    'label' => 'waka.productor::lang.drivers.sucess_label.open_link',
+                    'label' => 'waka.productor::lang.drivers.success_label.open_link',
                     'request' => 'onOpenLink',
                     'link' => $link
                 ],
