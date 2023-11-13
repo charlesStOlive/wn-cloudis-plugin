@@ -10,7 +10,7 @@ workflow: false
 
 
 controllerConfig:
-    breadcrump:
+    breadcrumb:
         inSettings: true 
         title: waka.cloudis::lang.models.montage.label
         rows: 
