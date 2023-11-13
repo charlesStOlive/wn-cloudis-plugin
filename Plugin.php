@@ -232,7 +232,7 @@ class Plugin extends PluginBase
             'montages' => [
                 'label' => Lang::get('waka.cloudis::lang.menu.montages'),
                 'description' => Lang::get('waka.cloudis::lang.menu.description'),
-                'category' => Lang::get('waka.wutils::lang.menu.settings_category_model'),
+                'category' => Lang::get('waka.wutils::lang.menu.model_category'),
                 'icon' => 'icon-object-group',
                 'permissions' => ['waka.cloudis.admin.*'],
                 'url' => Backend::url('waka/cloudis/montages'),
@@ -241,7 +241,7 @@ class Plugin extends PluginBase
             'biblios' => [
                 'label' => Lang::get('waka.cloudis::lang.menu.biblios'),
                 'description' => Lang::get('waka.cloudis::lang.menu.biblios_desc'),
-                'category' => Lang::get('waka.wutils::lang.menu.settings_category_model'),
+                'category' => Lang::get('waka.wutils::lang.menu.model_category'),
                 'icon' => 'icon-picture-o',
                 'permissions' => ['waka.cloudis.*'],
                 'url' => Backend::url('waka/cloudis/biblios'),
